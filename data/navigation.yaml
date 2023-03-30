@@ -1,0 +1,27 @@
+header:
+  - name: Home
+    title: Home Page
+    url: /
+  - name: About
+    title: About Me
+    url: /about/
+  - name: Research
+    title: Research
+    url: /research/
+#  - name: Blog
+#    title: Blog
+#    url: /blog/
+
+footer:
+  - name: Email
+    title: Get in Touch
+    url: mailto:spanda3@jhu.edu
+  - name: CV
+    title: CV
+    url: /cv.pdf
+  - name: RSS
+    title: RSS Feed
+    url: /index.xml
+  - name: Source
+    title: GitHub
+    url: https://github.com/sampan501/sampan.me

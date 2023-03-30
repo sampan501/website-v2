@@ -1,0 +1,33 @@
+{{ define "main" }}
+<main class="page-main pa4" role="main">
+  <section class="research-intro mw8 center tc mb5">
+    <h2 class="f2 f1-ns lh-solid center">{{ .Title }}</h2>
+    <p class="f6 f5-ns tracked measure lh-copy center">{{ .Description | markdownify}}</p>
+    {{ if .Params.show_author_byline }}<p class="f7 measure lh-copy tc center i">{{ if .Params.author }}Written by {{ .Params.author }}{{ end }}</p>{{ end }}
+  </section>
+  <section class="research-intro mw8 center mb3 ph3">
+    <h6 class="f7 fw7 black-20 mt4 tracked ttu lh-title">Current Interests</h6>
+  </section>
+  <section class="research-content db flex-ns flex-row-ns flex-wrap-ns items-start mw8 center">
+    {{ $paginator := .Paginate (where .Pages "Type" "research") }}
+    {{ range $paginator.Pages }}
+      {{ if .Params.current }}
+        {{ .Render "summary-grid"}}
+      {{ end }}
+    {{ end }}
+    {{ partial "shared/list-pagination.html" . }}
+  </section>
+  <section class="research-intro mw8 center mb3 ph3">
+    <h6 class="f7 fw7 black-20 mt4 tracked ttu lh-title">Past Interests</h6>
+  </section>
+  <section class="research-content db flex-ns flex-row-ns flex-wrap-ns items-start mw8 center">
+    {{ $paginator := .Paginate (where .Pages "Type" "research") }}
+    {{ range $paginator.Pages }}
+      {{ if not .Params.current }}
+        {{ .Render "summary-grid"}}
+      {{ end }}
+    {{ end }}
+    {{ partial "shared/list-pagination.html" . }}
+  </section>
+</main>
+{{ end }}
